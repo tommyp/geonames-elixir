@@ -2,16 +2,17 @@ defmodule Geonames.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :geonames,
-     version: "1.0.3",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps,
-
-     name: "GeoNames-Elixir",
-     description: description,
-     package: package]
+    [
+      app: :geonames,
+      version: "1.0.3",
+      elixir: "~> 1.2",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      name: "GeoNames-Elixir",
+      description: description(),
+      package: package()
+    ]
   end
 
   def application do
@@ -20,9 +21,9 @@ defmodule Geonames.Mixfile do
 
   defp deps do
     [
-      { :poison, "~> 3.0" },
-      { :httpoison, "~> 0.11.0" },
-      { :ex_doc, "~> 0.12", only: :dev }
+      {:poison, "~> 3.0"},
+      {:httpoison, "~> 1.8.0"},
+      {:ex_doc, "~> 0.12", only: :dev}
     ]
   end
 
@@ -36,9 +37,8 @@ defmodule Geonames.Mixfile do
     [
       maintainers: ["Adrian Hooper"],
       licenses: ["MIT"],
-      links: %{ "GitHub" => "https://github.com/pareeohnos/geonames-elixir"},
+      links: %{"GitHub" => "https://github.com/pareeohnos/geonames-elixir"},
       files: ~w(mix.exs README.md lib)
     ]
   end
-
 end
